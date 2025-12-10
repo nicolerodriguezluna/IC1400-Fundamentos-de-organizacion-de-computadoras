@@ -1,0 +1,16 @@
+#Código que lee blancos y escribe HOLA
+input: ''
+blank: ' '
+start state: q0
+table:
+  
+  q0:
+   ' ' : {write: H, R: q1}
+  q1:
+   ' ' : {write: O, R: q2}
+  q2:
+   ' ' : {write: L, R: q3}
+  q3:
+   ' ' : {write: A, R: qf}
+  
+  qf:

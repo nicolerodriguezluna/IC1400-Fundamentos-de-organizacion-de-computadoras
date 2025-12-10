@@ -1,0 +1,20 @@
+#Máquina de Turing que cambia solo el primer dígito.
+input: '199'
+blank: ' '
+start state: q0
+table:
+  
+  q0:
+   ' ': {write: 1, L: qf}
+   '0' : {write: 1, L: qf}
+   '1' : {write: 2, L: qf}
+   '2' : {write: 3, L: qf}
+   '3' : {write: 4, L: qf}
+   '4' : {write: 5, L: qf}
+   '5' : {write: 6, L: qf}
+   '6' : {write: 7, L: qf}
+   '7' : {write: 8, L: qf}
+   '8' : {write: 9, L: qf}
+   '9' : {write: 0, L: qf}
+  
+  qf:

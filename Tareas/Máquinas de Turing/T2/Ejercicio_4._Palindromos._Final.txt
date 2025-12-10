@@ -1,0 +1,247 @@
+# Maquina de Turing que determine si una palabra es un palindromo
+# Sebastian Fernandez Valerio, Tamara Nicole Rodriguez y
+# Juleisy Porras Diaz
+
+input: 'abba'
+blank: ' '
+start state: start
+
+table:
+  start:
+   a: {R: q1 a}
+   b: {R: q2 b}
+   c: {R: q3 c}
+   d: {R: q4 d}
+   e: {R: q5 e}
+   f: {R: q6 f}
+   g: {R: q7 g}
+   h: {R: q8 h}
+   i: {R: q9 i}
+   j: {R: q10 j}
+   k: {R: q11 k}
+   l: {R: q12 l}
+   m: {R: q13 m}
+   n: {R: q14 n}
+   o: {R: q15 o}
+   p: {R: q16 p}
+   q: {R: q17 q}
+   r: {R: q18 r}
+   s: {R: q19 s}
+   t: {R: q20 t}
+   u: {R: q21 u}
+   v: {R: q22 v}
+   w: {R: q23 w}
+   x: {R: q24 x}
+   y: {R: q25 y}
+   z: {R: q26 z}
+   
+  q1 a: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: a final}
+
+  a final:
+    a: {R: Aceptado}
+    [b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+
+  q2 b: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: b final}
+
+  b final:
+    b: {R: Aceptado}
+    [a,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q3 c: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: c final}
+
+  c final:
+    c: {R: Aceptado}
+    [a,b,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q4 d: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: d final}
+
+  d final:
+    d: {R: Aceptado}
+    [a,b,c,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q5 e: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: e final}
+
+  e final:
+    e: {R: Aceptado}
+    [a,b,c,d,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q6 f: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: f final}
+
+  f final:
+    f: {R: Aceptado}
+    [a,b,c,d,e,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+
+  q7 g: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: g final}
+
+  g final:
+    g: {R: Aceptado}
+    [a,b,c,d,e,f,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q8 h: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: h final}
+
+  h final:
+    h: {R: Aceptado}
+    [a,b,c,d,e,f,g,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q9 i: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: i final}
+
+  i final:
+    i: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q10 j: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: j final}
+
+  j final:
+    j: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q11 k: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: k final}
+
+  k final:
+    k: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q12 l: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: l final}
+
+  l final:
+    l: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q13 m: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: m final}
+
+  m final:
+    m: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,n,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q14 n: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: n final}
+
+  n final:
+    n: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,o,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q15 o: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: o final}
+
+  o final:
+    o: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,p,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q16 p: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: p final}
+
+  p final:
+    p: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,q,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q17 q: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: q final}
+
+  q final:
+    q: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,r,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q18 r: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: r final}
+
+  r final:
+    r: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,s,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q19 s: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: s final}
+
+  s final:
+    s: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,t,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q20 t: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: t final}
+
+  t final:
+    t: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u,v,w,x,y,z]: {R: Rechazado}
+  
+  q21 u: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: u final}
+
+  u final:
+    u: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,v,w,x,y,z]: {R: Rechazado}
+  
+  q22 v: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: v final}
+
+  v final:
+    v: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,w,x,y,z]: {R: Rechazado}
+  
+  q23 w: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: w final}
+
+  w final:
+    w: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,x,y,z]: {R: Rechazado}
+  
+  q24 x: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: x final}
+
+  x final:
+    x: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,z]: {R: Rechazado}
+  
+  q25 y: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: y final}
+
+  y final:
+    y: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,z]: {R: Rechazado}
+  
+  q26 z: 
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+    ' ': {L: z final}
+
+  z final:
+    z: {R: Aceptado}
+    [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y]: {R: Rechazado}
+
+  Aceptado:
+  Rechazado:

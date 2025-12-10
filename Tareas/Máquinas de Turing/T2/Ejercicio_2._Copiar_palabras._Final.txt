@@ -1,0 +1,164 @@
+# Maquina de Turing que lea y copia una palabra al lado
+# Sebastian Fernandez Valerio, Tamara Rodriguez Luna y
+# Juleisy Porras Diaz
+
+input: 'saldo'
+blank: ' '
+start state: Q0
+table:
+
+  Q0:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+   ' ': {write: 0, L: Q1}
+
+  Q1: 
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: L
+   ' ': {R: Checkletter}
+  
+  Checkletter: 
+   a: {write: A, R: CopyA}
+   b: {write: B, R: CopyB}
+   c: {write: C, R: CopyC}
+   d: {write: D, R: CopyD}
+   e: {write: E, R: CopyE}
+   f: {write: F, R: CopyF}
+   g: {write: G, R: CopyG}
+   h: {write: H, R: CopyH}
+   i: {write: I, R: CopyI}
+   j: {write: J, R: CopyJ}
+   k: {write: K, R: CopyK}
+   l: {write: L, R: CopyL}
+   m: {write: M, R: CopyM}
+   n: {write: N, R: CopyN}
+   o: {write: O, R: CopyO}
+   p: {write: P, R: CopyP}
+   q: {write: Q, R: CopyQ}
+   r: {write: R, R: CopyR}
+   s: {write: S, R: CopyS}
+   t: {write: T, R: CopyT}
+   u: {write: U, R: CopyU}
+   v: {write: V, R: CopyV}
+   w: {write: W, R: CopyW}
+   x: {write: X, R: CopyX}
+   y: {write: Y, R: CopyY}
+   z: {write: Z, R: CopyZ}
+   0: {L: GoBack2}
+
+  CopyA:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: a, R: GoBack}
+  CopyB:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: b, R: GoBack}
+  CopyC:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: c, R: GoBack}
+  CopyD:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: d, R: GoBack}
+  CopyE:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: e, R: GoBack}
+  CopyF:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: f, R: GoBack}
+  CopyG:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: g, R: GoBack}
+  CopyH:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: h, R: GoBack}
+  CopyI:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: i, R: GoBack}
+  CopyJ:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: j, R: GoBack}
+  CopyK:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: k, R: GoBack}
+  CopyL:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: l, R: GoBack}
+  CopyM:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: m, R: GoBack}
+  CopyN:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: n, R: GoBack}
+  CopyO:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: o, R: GoBack}
+  CopyP:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: p, R: GoBack}
+  CopyQ:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: q, R: GoBack}
+  CopyR:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: r, R: GoBack}
+  CopyS:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: s, R: GoBack}
+  CopyT:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: t, R: GoBack}
+  CopyU:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: u, R: GoBack}
+  CopyV:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: v, R: GoBack}
+  CopyW:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: w, R: GoBack}
+  CopyX:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: x, R: GoBack}
+  CopyY:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: y, R: GoBack}
+  CopyZ:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: R
+   ' ': {write: z, R: GoBack}
+  
+  GoBack:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0]: {L: GoBack}
+   ' ': L
+   [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z]: {R: Checkletter}
+
+  GoBack2:
+   A: {write: a, L: GoBack2}
+   B: {write: b, L: GoBack2}
+   C: {write: c, L: GoBack2}
+   D: {write: d, L: GoBack2}
+   E: {write: e, L: GoBack2}
+   F: {write: f, L: GoBack2}
+   G: {write: g, L: GoBack2}
+   H: {write: h, L: GoBack2}
+   I: {write: i, L: GoBack2}
+   J: {write: j, L: GoBack2}
+   K: {write: k, L: GoBack2}
+   L: {write: l, L: GoBack2}
+   M: {write: m, L: GoBack2}
+   N: {write: n, L: GoBack2}
+   O: {write: o, L: GoBack2}
+   P: {write: p, L: GoBack2}
+   Q: {write: q, L: GoBack2}
+   R: {write: r, L: GoBack2}
+   S: {write: s, L: GoBack2}
+   T: {write: t, L: GoBack2}
+   U: {write: u, L: GoBack2}
+   V: {write: v, L: GoBack2}
+   W: {write: w, L: GoBack2}
+   X: {write: x, L: GoBack2}
+   Y: {write: y, L: GoBack2}
+   Z: {write: z, L: GoBack2}
+   ' ': {R: Prefinal}
+ 
+  Prefinal:
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+   0: {write: ' ', R: Final}
+
+  Final:

@@ -1,0 +1,35 @@
+# Rodolfo Mora Zamora
+# 4 de marzo del 2021
+# Juleisy Porras Díaz
+# Sebastián Fernández Valerio
+# Nicole Rodríguez Luna
+
+# Máquina de Turing que reemplaza espacios en blanco por letras
+# Esta máquina de Turing reemplaza espacios vacíos por la palabra HOLA. 
+# Al encontrarse en q0, si detecta un espacio en blanco, escribe la letra H y pasa a q1. 
+# En q1 si detecta un espacio vacío se escribe la letra O y pasa a q2. 
+# Posteriormente en q2, si la máquina detecta un espacio vacío escribe la L y pasa a q3. 
+# En q3, si detecta un espacio vacío se escribe la letra A y pasa a q4. 
+# Finalmente, en q4 si se detecta un espacio, se finaliza el proceso pasando a qf.
+
+input: '    '
+blank: ' '
+start state: q0
+table:
+  
+  q0:
+   ' ' : {write: H, R: q1}
+
+  q1:
+   ' ' : {write: O, R: q2}
+ 
+  q2:
+   ' ' : {write: L, R: q3}
+
+  q3:
+   ' ': {write: A, R: q4}
+  
+  q4:
+   ' ': {write: ' ', L: qf}
+  # termina la ejecución
+  qf:

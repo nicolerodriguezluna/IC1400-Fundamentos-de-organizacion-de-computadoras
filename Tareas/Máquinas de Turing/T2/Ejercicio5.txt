@@ -1,0 +1,255 @@
+# Compara dos números 
+# termina en MAYOR si el primero es mayor
+# termina en MENOR si el primero es menor
+# termina en IGUAL si ambos números son iguales
+
+# La cinta inicia con dos números enteros en base 10 separados por espacio 
+input: '785562485 2555225144552'
+
+# El espacio es el blanco
+blank: ' '
+
+# inicio es el estado inicial
+start state: inicio
+
+table:
+  # Preparación: Acomodamos un poco la cinta para trabajar más cómodamente
+
+  # Lo primero que hacemos es reemplazar el espacio del medio por un #
+  # Esto nos ahorrará algunos estados en el futuro
+  inicio:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    ' '  : {write: '#', L: reinicio}
+  
+  # reinicio vuelve a colocar la cabeza lectora al inicio de la cinta
+  reinicio:
+    [0,1,2,3,4,5,6,7,8,9]: L
+    ' ' : {R: digito1}
+  
+  # Parte 1: debemos determinar si un número tiene más dígitos que el otro
+  # Si es el caso, el número con más dígitos es el mayor
+    
+  # tomamos el primer dígito válido del primer número y lo reemplazamos por una letra
+  digito1: 
+    [A,B,C,D,E,F,G,H,I,J] : R
+    0 : {write: A, R: num2}
+    1 : {write: B, R: num2}
+    2 : {write: C, R: num2}
+    3 : {write: D, R: num2}
+    4 : {write: E, R: num2}
+    5 : {write: F, R: num2}
+    6 : {write: G, R: num2}
+    7 : {write: H, R: num2}
+    8 : {write: I, R: num2}
+    9 : {write: J, R: num2}
+    # Si nos encontramos un blanco, significa que se acabó el primer número, tenemos que revisar si el segundo número aún tiene dígitos válidos
+    '#' : {R: revisaIgual}
+  
+  digito2:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    0 : {write: A, L: num1}
+    1 : {write: B, L: num1}
+    2 : {write: C, L: num1}
+    3 : {write: D, L: num1}
+    4 : {write: E, L: num1}
+    5 : {write: F, L: num1}
+    6 : {write: G, L: num1}
+    7 : {write: H, L: num1}
+    8 : {write: I, L: num1}
+    9 : {write: J, L: num1}
+    # Si nos encontramos un blanco, significa que el primer número tiene más dígitos, paramos aquí
+    ' ' : {R: MAYOR}
+  
+  # este estado busca el inicio del primer número
+  num1:
+    [A,B,C,D,E,F,G,H,I,J] : L
+    [0,1,2,3,4,5,6,7,8,9] : L
+    '#' : L
+    ' ' : {R : digito1}
+  
+  # este estado busca el inicio del segundo número
+  num2: 
+    [0,1,2,3,4,5,6,7,8,9,0] : R
+    '#' : {R: digito2}
+  
+  # este estado revisa si el segundo número tiene más dígitos que el primero
+  # si se encuentra un dígito, el primer número es MENOR
+  # si se encuentra un blanco, ambos números tienen la misma cantidad de dígitos y pasamos a la fase 2 del problema
+  revisaIgual:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    [0,1,2,3,4,5,6,7,8,9] : {R: MENOR}
+    ' ' : {L: inicioFase2}
+    
+  
+  # Parte 2: Ahora hay que comparar dígito por dígito
+  
+  # este estado busca el inicio del primer número
+  inicioFase2:
+    [0,1,2,3,4,5,6,7,8,9] : L
+    [A,B,C,D,E,F,G,H,I,J] : L
+    '#' : L
+    ' ' : {R: digito1F2}
+    
+  # este estado busca el primer digito válido del primer número en la fase 2
+  digito1F2:
+    # los dígitos numéricos ya no son válidos, los ignoramos
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # las letras ahora son los dígitos válidos
+    A : {write: 0, R: buscaA}
+    B : {write: 1, R: buscaB}
+    C : {write: 2, R: buscaC}
+    D : {write: 3, R: buscaD}
+    E : {write: 4, R: buscaE}
+    F : {write: 5, R: buscaF}
+    G : {write: 6, R: buscaG}
+    H : {write: 7, R: buscaH}
+    I : {write: 8, R: buscaI}
+    J : {write: 9, R: buscaJ}
+    # si se nos acaban los dígitos, es porque ambos números son iguales
+    '#' : {R: IGUAL}
+  
+  # todos los estados buscaX son iguales
+  # buscan el inicio del segundo número
+  # se ocupan estados distintos porque necesitamos recordar la letra
+  # los estados son la memoria de la máquina
+  buscaA: 
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaA}
+  
+  buscaB:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaB}
+  
+  buscaC:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaC}
+    
+  buscaD:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaD}
+  
+  buscaE:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaE}
+    
+  buscaF:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaF}
+    
+  buscaG:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaG}
+    
+  buscaH:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaH}
+    
+  buscaI:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaI}
+    
+  buscaJ:
+    [A,B,C,D,E,F,G,H,I,J] : R
+    '#' : {R : comparaJ}
+    
+  
+  # los estados comparaX buscan el primer dígito válido del segundo número
+  # una vez que lo encuentra lo compara con la X
+  comparaA:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    A : {write: 0, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    [B,C,D,E,F,G,H,I,J] : {R: MENOR}
+  
+  comparaB:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    A : {R : MAYOR}
+    B : {write: 1, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    [C,D,E,F,G,H,I,J] : {R: MENOR}
+    
+  comparaC:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    [A,B] : {R : MAYOR}
+    C : {write: 2, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    [D,E,F,G,H,I,J] : {R: MENOR}
+  
+  comparaD:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    [A,B,C] : {R : MAYOR}
+    D : {write: 3, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    [F,G,H,I,J] : {R: MENOR}
+  
+  comparaE:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    [A,B,C,D] : {R : MAYOR}
+    E : {write: 4, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    [F,G,H,I,J] : {R: MENOR}
+  
+  comparaF:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    [A,B,C,D,E] : {R : MAYOR}
+    F : {write: 5, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    [G,H,I,J] : {R: MENOR}
+  
+  comparaG:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    [A,B,C,D,E,F] : {R : MAYOR}
+    G : {write: 6, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    [H,I,J] : {R: MENOR}
+    
+  comparaH:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    [A,B,C,D,E,F,G] : {R : MAYOR}
+    H : {write: 7, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    [I,J] : {R: MENOR}
+  
+  comparaI:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    [A,B,C,D,E,F,G,H] : {R : MAYOR}
+    I : {write: 8, L: inicioFase2}
+    # si encuentra un dígito mayor en el segundo número, termina
+    # el primer número es MENOR
+    J : {R: MENOR}
+    
+  comparaJ:
+    [0,1,2,3,4,5,6,7,8,9] : R
+    # si encuentra un dígito menor en el segundo número, termina
+    # el primer número es MAYOR
+    [A,B,C,D,E,F,G,H,I] : {R : MAYOR}
+    J : {write: 9, L: inicioFase2}
+    
+  
+  MAYOR:
+  MENOR:
+  IGUAL:

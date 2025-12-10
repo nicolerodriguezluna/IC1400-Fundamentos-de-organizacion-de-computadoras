@@ -1,0 +1,29 @@
+# Maquina de Turing que lee y verifica si un correo 
+# electronico es valido o no
+# Sebastian Fernandez Valerio, Tamara Rodriguez Luna y
+# Juleisy Porras Diaz
+
+input: 'frase@frase.frase'
+blank: ' '
+start state: Inicio
+Synonym: 
+
+table:
+  Inicio: 
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+   ".,-,_": R
+   "@": {R: Prueba}
+   ' ': {L: RECHAZADO}
+
+  Prueba: 
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+   ".,-,_,": {R: Prueba 2}
+   ' ': {L: RECHAZADO}
+   '@': {L: RECHAZADO}
+
+  Prueba 2: 
+   [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]: R
+   ' ': {L: ACEPTADO}
+   
+  ACEPTADO:
+  RECHAZADO:
